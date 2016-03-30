@@ -8,8 +8,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by apple on 15/9/14.
- * update by YMY 15/11/13
+ *
  */
 public class UserCatLike implements Serializable {
 

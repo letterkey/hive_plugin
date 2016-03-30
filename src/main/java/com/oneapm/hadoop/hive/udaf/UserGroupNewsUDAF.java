@@ -1,7 +1,7 @@
 package com.oneapm.hadoop.hive.udaf;
 
 import com.alibaba.fastjson.JSON;
-import com.oneapm.hadoop.hive.udaf.model.News;
+import com.oneapm.hadoop.hive.udaf.model.Data;
 import com.oneapm.hadoop.hive.udaf.model.UserGroupNews;
 import org.apache.hadoop.hive.ql.exec.UDAF;
 import org.apache.hadoop.hive.ql.exec.UDAFEvaluator;
@@ -28,7 +28,7 @@ public class UserGroupNewsUDAF extends UDAF {
 		@Override
 		public void init() {
 			data.setId(null);
-			data.setData(new ArrayList<News>());
+			data.setData(new ArrayList<Data>());
 		}
 
 		/**
@@ -40,12 +40,12 @@ public class UserGroupNewsUDAF extends UDAF {
          * @param topN
          * @return
          */
-		public boolean iterate(String uid,String group, String newsId, int callCount,int topN) {
+		public boolean iterate(String uid,String group, String newsId, int callCount,String dataType,int topN) {
 			if (uid != null && newsId != null) {
 				data.setId(uid);
 				data.setTopN(topN);
 				data.setGroup(group);
-				data.getData().add(new News(newsId, callCount));
+				data.getData().add(new Data(newsId, callCount,dataType));
 			}
 			return true;
 		}
@@ -74,7 +74,7 @@ public class UserGroupNewsUDAF extends UDAF {
 				int topN = data.getTopN()>0 ? data.getTopN() : data.getData().size();
 				data.setTopN(topN);
 				if (data.getData().size() > topN) {
-					List<News> ns = data.getData();
+					List<Data> ns = data.getData();
 					if(topN > 0)
 						ns = data.getData().subList(0, topN);
 					data.setData(ns);

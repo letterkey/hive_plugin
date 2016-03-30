@@ -7,24 +7,25 @@ import java.io.Serializable;
 /**
  * Created by apple on 15/9/14.
  */
-public class News implements Serializable, Comparable<News> {
-	private String newsId;
+public class Data implements Serializable, Comparable<Data> {
+	private String dataId;
 	private Integer callCount;
-
-	public News() {
+	private String dataType;
+	public Data() {
 	}
 
-	public News(String newsId, int callCount) {
-		this.newsId = newsId;
+	public Data(String dataId, int callCount, String dataType) {
+		this.dataId = dataId;
 		this.callCount = callCount;
+		this.dataType = dataType;
 	}
 
-	public String getNewsId() {
-		return newsId;
+	public String getDataId() {
+		return dataId;
 	}
 
-	public void setNewsId(String newsId) {
-		this.newsId = newsId;
+	public void setDataId(String dataId) {
+		this.dataId = dataId;
 	}
 
 	public Integer getCallCount() {
@@ -33,6 +34,14 @@ public class News implements Serializable, Comparable<News> {
 
 	public void setCallCount(Integer callCount) {
 		this.callCount = callCount;
+	}
+
+	public String getDataType() {
+		return dataType;
+	}
+
+	public void setDataType(String dataType) {
+		this.dataType = dataType;
 	}
 
 	@Override
@@ -47,7 +56,7 @@ public class News implements Serializable, Comparable<News> {
 	 * @return
 	 */
 	@Override
-	public int compareTo(News o) {
+	public int compareTo(Data o) {
 		if (o == null) {
 			return 0;
 		}

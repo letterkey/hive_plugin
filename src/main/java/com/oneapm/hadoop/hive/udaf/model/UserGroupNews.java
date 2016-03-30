@@ -15,7 +15,7 @@ public class UserGroupNews implements Serializable {
 
 	@JSONField(name="_id")
 	private String id;
-	private List<News> data;
+	private List<Data> data;
 	private String createTime;
 	private String group;
 
@@ -25,7 +25,7 @@ public class UserGroupNews implements Serializable {
 	public UserGroupNews() {
 	}
 
-	public UserGroupNews(String id, List<News> data) {
+	public UserGroupNews(String id, List<Data> data) {
 		this.id = id;
 		this.data = data;
 	}
@@ -38,11 +38,11 @@ public class UserGroupNews implements Serializable {
 		this.id = id;
 	}
 
-	public List<News> getData() {
+	public List<Data> getData() {
 		return data;
 	}
 
-	public void setData(List<News> data) {
+	public void setData(List<Data> data) {
 		this.data = data;
 	}
 

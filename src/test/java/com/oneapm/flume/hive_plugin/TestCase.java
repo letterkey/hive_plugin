@@ -1,8 +1,10 @@
 package com.oneapm.flume.hive_plugin;
 
 import java.text.DecimalFormat;
+import java.util.HashMap;
 import java.util.Map;
 
+import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
 
@@ -32,9 +34,23 @@ public class TestCase {
 				"[8,9,12,7]");
 		System.out.println(o.size());
 	}
-	
+	//["{\"阿杰\":254.18813760723296}","{\"爸爸\":124.01170081383111}","{\"宝宝\":69.11225944625576}","{\"父母\":67.96744799486767}","{\"孩子\":53.443821294871626}","{\"游戏\":52.93198900792951}","{\"妈妈\":52.59076748330145}","{\"广州\":46.073973611627814}"]
+
 	@Test
 	public void doubleS(){
-		System.out.println(1/3.0);
+		String s = "[{\"阿杰\":254.18813760723296},{\"爸爸\":124.01170081383111},{\"宝宝\":69.11225944625576},{\"父母\":67.96744799486767},{\"孩子\":53.443821294871626},{\"游戏\":52.93198900792951},{\"妈妈\":52.59076748330145},{\"广州\":46.073973611627814}]";
+		JSONArray objects = JSON.parseArray(s.toString());
+
+		Map map = new HashMap();
+		for (Object object : objects) {
+			System.out.println(object.toString());
+
+			JSONObject obj = JSONObject.parseObject(object.toString());
+			for(String key : obj.keySet()) {
+				System.out.println(key +":"+obj.getString(key));
+				map.put(key,obj.get(key));
+			}
+
+		}
 	}
 }

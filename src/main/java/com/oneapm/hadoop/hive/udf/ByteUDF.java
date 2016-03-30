@@ -7,8 +7,7 @@ import java.io.UnsupportedEncodingException;
 /**
  * Created by YMY on 16-1-21.
  */
-public class ByteUDF extends UDF
-{
+public class ByteUDF extends UDF{
 	public int evaluate(String data, String code)
 	{
 		int len = 0;
