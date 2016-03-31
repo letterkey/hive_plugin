@@ -2,6 +2,7 @@ package com.oneapm.hadoop.hive.udaf.model;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.annotation.JSONField;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 import java.util.List;
@@ -62,6 +63,6 @@ public class UserTagLike {
 
     @Override
     public String toString() {
-        return JSON.toJSONString(this);
+        return JSON.toJSONString(this, SerializerFeature.DisableCircularReferenceDetect);
     }
 }

@@ -1,10 +1,15 @@
 package com.oneapm.hadoop.hive.udaf;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.oneapm.hadoop.hive.udaf.model.TagLike;
 import com.oneapm.hadoop.hive.udaf.model.UserTagLike;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.hadoop.hive.ql.exec.UDAF;
 import org.apache.hadoop.hive.ql.exec.UDAFEvaluator;
+import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,7 +20,7 @@ import java.util.List;
  * Created by YMY on 16/03/17.
  */
 public class GenerateUserTagLike extends UDAF {
-
+	private static final Logger logger = LoggerFactory.getLogger(GenerateUserTagLike.class);
 	public static class TagLikeEvaluate implements UDAFEvaluator {
 
 		UserTagLike userTagLike;
@@ -27,7 +32,6 @@ public class GenerateUserTagLike extends UDAF {
 
 		@Override
 		public void init() {
-			userTagLike.setId(null);
 			userTagLike.setTagLikes(new ArrayList<TagLike>());
 		}
 
@@ -40,7 +44,7 @@ public class GenerateUserTagLike extends UDAF {
          * @return
          */
 		public boolean iterate(String uid, String tagId, Double weight,int topN) {
-			if (uid != null && tagId != null && weight != null) {
+			if (StringUtils.isNotEmpty(uid ) && StringUtils.isNotEmpty(tagId ) && weight != null) {
 					userTagLike.setId(uid);
 					userTagLike.setTopN(topN);
 					userTagLike.getTagLikes().add(new TagLike(tagId,weight));
@@ -76,7 +80,8 @@ public class GenerateUserTagLike extends UDAF {
 					userTagLike.setTagLikes(tagLikes);
 				}
 			}
-			return userTagLike == null && userTagLike.getId() != null ? null : JSON.toJSONString(userTagLike);
+			//fastjson解析后避免出现下列符号：{"$ref":"$.tagLikes[5]"}  详情参阅SerializerFeature.DisableCircularReferenceDetect 参数
+			return userTagLike == null && userTagLike.getId() != null ? null : JSON.toJSONString(userTagLike, SerializerFeature.DisableCircularReferenceDetect);
 		}
 
 		private void normalization(List<TagLike> tagLikes) {
