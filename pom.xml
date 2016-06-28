@@ -4,7 +4,7 @@
 
 	<groupId>com.oneapm.flume</groupId>
 	<artifactId>hive_plugin</artifactId>
-	<version>0.0.8-SNAPSHOT</version>
+	<version>0.0.10-SNAPSHOT</version>
 	<build>
 		<plugins>
 			<plugin>
