@@ -57,6 +57,20 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.yht</groupId>
+			<artifactId>UserAgentParser</artifactId>
+			<version>0.0.1</version>
+			<scope>system</scope>
+			<systemPath>/Users/yinmuyang/git/UserAgentParser/target/UserAgentParser-0.0.1.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>eu.bitwalker</groupId>
+			<artifactId>UserAgentUtils</artifactId>
+			<version>1.20</version>
+		</dependency>
+
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>

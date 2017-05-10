@@ -32,6 +32,4 @@ public class StringStartWithUDF extends UDF {
 			return re;
 		}
 	}
-
-
 }
