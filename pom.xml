@@ -56,13 +56,13 @@
 			<version>19.0</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.yht</groupId>
-			<artifactId>UserAgentParser</artifactId>
-			<version>0.0.1</version>
-			<scope>system</scope>
-			<systemPath>/Users/yinmuyang/git/UserAgentParser/target/UserAgentParser-0.0.1.jar</systemPath>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>com.yht</groupId>-->
+			<!--<artifactId>UserAgentParser</artifactId>-->
+			<!--<version>0.0.1</version>-->
+			<!--<scope>system</scope>-->
+			<!--<systemPath>/Users/yinmuyang/git/UserAgentParser/target/UserAgentParser-0.0.1.jar</systemPath>-->
+		<!--</dependency>-->
 
 		<dependency>
 			<groupId>eu.bitwalker</groupId>

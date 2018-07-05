@@ -1,6 +1,6 @@
 package com.oneapm.hadoop.hive.udf;
 
-import com.yht.userAgent.UserAgentParser;
+//import com.yht.userAgent.UserAgentParser;
 import org.apache.hadoop.hive.ql.exec.Description;
 import org.apache.hadoop.hive.ql.exec.UDF;
 
@@ -14,22 +14,21 @@ import org.apache.hadoop.hive.ql.exec.UDF;
 public class UserAgentUDF extends UDF{
 	public String evaluate(String UAString, String k){
 		String v= "";
-		try {
-			UserAgentParser userAgentParser = new UserAgentParser();
-
-			if("os".equals(k))
-				v = userAgentParser.OS(UAString);
-			else if("platform".equals(k))
-				v = userAgentParser.platform(UAString);
-			else if("browser".equals(k))
-				v = userAgentParser.browser(UAString);
-			else
-				v = userAgentParser.browserVersion(UAString, k);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
+//		try {
+//			UserAgentParser userAgentParser = new UserAgentParser();
+//
+//			if("os".equals(k))
+//				v = userAgentParser.OS(UAString);
+//			else if("platform".equals(k))
+//				v = userAgentParser.platform(UAString);
+//			else if("browser".equals(k))
+//				v = userAgentParser.browser(UAString);
+//			else
+//				v = userAgentParser.browserVersion(UAString, k);
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} finally {
 			return v;
 		}
 	}
-}

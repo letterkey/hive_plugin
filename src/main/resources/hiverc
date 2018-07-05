@@ -1,0 +1,3 @@
+add jar /data/yinmuyang/hivesql/hivelib/hive_plugin-0.0.10-SNAPSHOT.jar;
+
+create temporary function take_feature_udaf as 'com.oneapm.hadoop.hive.udaf.DIDI_Take_Feature_UDAF';
